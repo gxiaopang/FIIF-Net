@@ -4,8 +4,28 @@
 [![PyTorch](https://img.shields.io/badge/PyTorch-1.9+-ee4c2c.svg)](https://pytorch.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+[![DOI](https://zenodo.org/badge/1230791790.svg)](https://doi.org/10.5281/zenodo.20065381)
+
 > Official PyTorch implementation of the paper: **"Multi-focus Image Fusion with Alignment and Interactive Weighting for Cosmic Dust Microscopic Imaging"**.
 
+---
+
+## 📌 About & Citation
+
+This code is directly related to the manuscript currently submitted to ***The Visual Computer***. 
+
+If you find our code, dataset, or framework useful for your research, we kindly request that you cite our paper:
+
+```bibtex
+@article{xian2026fiifnet,
+  title={Multi-focus Image Fusion with Alignment and Interactive Weighting for Cosmic Dust Microscopic Imaging},
+  author={Xian, Yongli and Gong, Zhijie and Zhao, Guangxin and Wang, Congzheng and Zhao, Chengxuan},
+  journal={Submitted to The Visual Computer},
+  year={2026}
+}
+```
+
+---
 
 ## 🌟 Network Architecture
 
@@ -19,7 +39,7 @@ FIIF-Net is designed to address the challenges of cosmic dust microscopic imagin
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/FIIF-Net.git
+git clone https://github.com/gxiaopang/FIIF-Net.git
 cd FIIF-Net
 
 # Install dependencies
@@ -47,7 +67,9 @@ dataset/
 We support both step-by-step training and a unified full-pipeline training mode.
 
 ### Option A: Full Pipeline (Recommended)
+
 Train both stages automatically with a single command:
+
 ```bash
 python train.py --stage both --train_dir ./dataset/train --val_dir ./dataset/test
 ```
@@ -55,6 +77,7 @@ python train.py --stage both --train_dir ./dataset/train --val_dir ./dataset/tes
 ### Option B: Step-by-Step Training
 
 **Stage 1: Individual Pre-training**
+
 ```bash
 # 1. Pre-train Alignment-Net
 python train_alignment.py --train_dir ./dataset/train --epochs 100 --batch_size 18 --lr 0.0001
@@ -64,6 +87,7 @@ python train_focus.py --train_dir ./dataset/train --epochs 50 --batch_size 2 --l
 ```
 
 **Stage 2: Joint Training**
+
 ```bash
 # Train Fusion-Net using pre-trained weights from Stage 1
 python train_fusion.py \
@@ -112,3 +136,4 @@ FIIF-Net/
 ├── requirements.txt          # Dependencies
 └── model_pth/                # Directory for saving model weights
 ```
+
